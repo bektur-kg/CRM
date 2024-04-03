@@ -61,6 +61,42 @@ namespace CRM.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your account is blocked.
+        /// </summary>
+        internal static string AccountIsBlocked {
+            get {
+                return ResourceManager.GetString("AccountIsBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot block user you are currently in .
+        /// </summary>
+        internal static string BlockCurrentUserError {
+            get {
+                return ResourceManager.GetString("BlockCurrentUserError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot change user role you are currently in.
+        /// </summary>
+        internal static string ChangeCurrentUserRoleError {
+            get {
+                return ResourceManager.GetString("ChangeCurrentUserRoleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot delete user you are currently in .
+        /// </summary>
+        internal static string DeleteCurrentUserError {
+            get {
+                return ResourceManager.GetString("DeleteCurrentUserError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Provided password is incorrect.
         /// </summary>
         internal static string IncorrectPassword {
@@ -79,11 +115,47 @@ namespace CRM.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your old password and new password are same.
+        /// </summary>
+        internal static string SamePasswordError {
+            get {
+                return ResourceManager.GetString("SamePasswordError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user has same role as you provided.
+        /// </summary>
+        internal static string SameRoleError {
+            get {
+                return ResourceManager.GetString("SameRoleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Such user already exists.
         /// </summary>
         internal static string UserAlreadyExists {
             get {
                 return ResourceManager.GetString("UserAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user is already blocked.
+        /// </summary>
+        internal static string UserIsAlreadyBlocked {
+            get {
+                return ResourceManager.GetString("UserIsAlreadyBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This user is already unblocked.
+        /// </summary>
+        internal static string UserIsAlreadyUnblocked {
+            get {
+                return ResourceManager.GetString("UserIsAlreadyUnblocked", resourceCulture);
             }
         }
         

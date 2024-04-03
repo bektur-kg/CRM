@@ -12,6 +12,7 @@ using CRM.Domain.Results;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
+using System.Net.Http;
 
 namespace CRM.Application.Services;
 
@@ -23,7 +24,10 @@ public class UserService : IUserService
     private readonly IMapper _mapper;
     private readonly HttpContext _httpContext;
 
-    public UserService(AppDbContext dbContext, IPasswordHasher passwordHasher, IMapper mapper, IHttpContextAccessor httpContextAccessor, IUserValidation userValidation)
+    public long CurrentUserId => long.Parse(_httpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+    public UserService(AppDbContext dbContext, IPasswordHasher passwordHasher, IMapper mapper,
+        IHttpContextAccessor httpContextAccessor, IUserValidation userValidation)
     {
         _dbContext = dbContext;
         _passwordHasher = passwordHasher;
@@ -32,38 +36,22 @@ public class UserService : IUserService
         _validation = userValidation;
     }
 
-    public async Task<BaseResult> LoginUserAsync(UserLoginRequest userDto)
+    public async Task<BaseResult> LoginUserAsync(UserLoginRequest requestDto)
     {
-        var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Email == userDto.Email);
+        var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Email == requestDto.Email);
 
-        var result = _validation.ValidateForNull(user);
+        var result = _validation.ValidateOnLogin(user, requestDto);
 
-        if (!result.IsSuccess)
-        {
-            return new BaseResult
-            {
-                ErrorMessage = result.ErrorMessage
-            };
-        }
-
-        var isVerified = _passwordHasher.Verify(userDto.Passord, user.PassordHash);
-
-        if (!isVerified)
-        {
-            return new BaseResult
-            {
-                ErrorMessage = ResultMessages.IncorrectPassword
-            };
-        }
+        if (!result.IsSuccess) return result;
 
         await LoginWithHttpContextAsync(user.Email, user.Role, user.Id);
 
         return new BaseResult();
     }
 
-    public async Task<BaseResult<UserRegisterResponse>> RegisterUserAsync(UserRegisterRequest userDto)
+    public async Task<BaseResult<UserRegisterResponse>> RegisterUserAsync(UserRegisterRequest requestDto)
     {
-        var existingUser = await _dbContext.Users.Where(user => user.Email == userDto.Email).FirstOrDefaultAsync();
+        var existingUser = await _dbContext.Users.AsNoTracking().Where(user => user.Email == requestDto.Email).FirstOrDefaultAsync();
 
         var result = _validation.ValidateOnCreate(existingUser);
 
@@ -75,10 +63,10 @@ public class UserService : IUserService
             };
         }
 
-        var hashedPassword = _passwordHasher.Generate(userDto.Password);
+        var hashedPassword = _passwordHasher.Generate(requestDto.Password);
 
-        var user = _mapper.Map<User>(userDto);
-        user.PassordHash = hashedPassword;
+        var user = _mapper.Map<User>(requestDto);
+        user.PasswordHash = hashedPassword;
 
         await _dbContext.Users.AddAsync(user);
         await _dbContext.SaveChangesAsync();
@@ -95,7 +83,7 @@ public class UserService : IUserService
         {
             new Claim(ClaimTypes.Email, email),
             new Claim(ClaimTypes.Role, userRole.ToString()),
-            new Claim("Id", id.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, id.ToString()),
         };
 
         var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
@@ -104,4 +92,97 @@ public class UserService : IUserService
         await _httpContext.SignInAsync(claimsPrincipal);
     }
 
+    public async Task<BaseResult<List<UserResponse>>> GetAllUsersAsync()
+    {
+        var users = await _dbContext.Users.AsNoTracking().ToListAsync();
+
+        return new BaseResult<List<UserResponse>>()
+        {
+            Data = _mapper.Map<List<UserResponse>>(users)
+        };
+    }
+
+    public async Task<BaseResult<UserResponse>> GetCurrentUserAsync()
+    {
+        var user = await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(user => user.Id == CurrentUserId);
+
+        return new BaseResult<UserResponse>
+        {
+            Data = _mapper.Map<UserResponse>(user)
+        };
+    }
+
+    public async Task<BaseResult> BlockUserAsync(long userId)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == userId);
+
+        var result = _validation.ValidateOnBlock(user, CurrentUserId);
+
+        if (!result.IsSuccess) return result;
+
+        user.BlockDate = DateTime.UtcNow;
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResult();
+    }
+
+    public async Task<BaseResult> UnblockUserAsync(long userId)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == userId);
+
+        var result = _validation.ValidateOnUnblock(user);
+
+        if (!result.IsSuccess) return result;
+
+        user.BlockDate = null;
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResult();
+    }
+
+    public async Task<BaseResult> DeleteUserByIdAsync(long id)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == id);
+
+        var result = _validation.ValidateOnDelete(user, CurrentUserId);
+
+        if (!result.IsSuccess) return result;
+
+        _dbContext.Users.Remove(user);
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResult();
+    }
+
+    public async Task<BaseResult<UserResponse>> ChangeUserRoleAsync(long userId, UserRole newRole)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == userId);
+
+        var result = _validation.ValidateOnRoleChange(user, newRole, CurrentUserId);
+
+        if (!result.IsSuccess) return new BaseResult<UserResponse> { ErrorMessage = result.ErrorMessage };
+
+        user.Role = newRole;
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResult<UserResponse>
+        {
+            Data = _mapper.Map<UserResponse>(user),
+        };
+    }
+
+    public async Task<BaseResult> ChangeCurrentUserPasswordAsync(UserChangePasswordRequest requestDto)
+    {
+        var user = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == CurrentUserId);
+
+        var result = _validation.ValidateOnPasswordChange(user, requestDto);
+
+        if (!result.IsSuccess) return result;
+
+        var newHashedPassword = _passwordHasher.Generate(requestDto.NewPassword);
+        user.PasswordHash = newHashedPassword;
+        await _dbContext.SaveChangesAsync();
+
+        return new BaseResult();
+    }
 }

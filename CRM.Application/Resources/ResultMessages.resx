@@ -117,14 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountIsBlocked" xml:space="preserve">
+    <value>Your account is blocked</value>
+  </data>
+  <data name="BlockCurrentUserError" xml:space="preserve">
+    <value>You cannot block user you are currently in </value>
+  </data>
+  <data name="ChangeCurrentUserRoleError" xml:space="preserve">
+    <value>You cannot change user role you are currently in</value>
+  </data>
+  <data name="DeleteCurrentUserError" xml:space="preserve">
+    <value>You cannot delete user you are currently in </value>
+  </data>
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Provided password is incorrect</value>
   </data>
   <data name="InternalServerError" xml:space="preserve">
     <value>Internal server error</value>
   </data>
+  <data name="SamePasswordError" xml:space="preserve">
+    <value>Your old password and new password are same</value>
+  </data>
+  <data name="SameRoleError" xml:space="preserve">
+    <value>This user has same role as you provided</value>
+  </data>
   <data name="UserAlreadyExists" xml:space="preserve">
     <value>Such user already exists</value>
+  </data>
+  <data name="UserIsAlreadyBlocked" xml:space="preserve">
+    <value>This user is already blocked</value>
+  </data>
+  <data name="UserIsAlreadyUnblocked" xml:space="preserve">
+    <value>This user is already unblocked</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>There is no such user</value>

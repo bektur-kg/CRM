@@ -9,7 +9,7 @@ public class Contact
 
     public required long MarketerId { get; set; }
 
-    public required User Marketer { get; set; }
+    public User? Marketer { get; set; }
 
     [StringLength(100)]
     public required string FirstName { get; set; }
@@ -20,10 +20,9 @@ public class Contact
     [StringLength(100)]
     public string? Surname { get; set; }
 
-    [Phone]
     public required string PhoneNumber { get; set; }
 
-    [EmailAddress]
+    [StringLength(200)]
     public string? Email { get; set; }
 
     public required ContactStatus Status { get; set; }
