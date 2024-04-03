@@ -1,19 +1,15 @@
 ﻿using CRM.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace CRM.Domain.Entities;
+namespace CRM.Domain.Contracts.User;
 
-public class User
+public record UserRegisterResponse
 {
     public required long Id { get; set; }
 
-    [StringLength(300)]
     public string? FullName { get; set; }
 
-    [EmailAddress]
     public required string Email { get; set; }
-
-    public required string PassordHash { get; set; }
 
     public required UserRole Role { get; set; }
 

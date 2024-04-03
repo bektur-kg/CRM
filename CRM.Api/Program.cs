@@ -1,4 +1,5 @@
 using CRM.DAL.DependencyInjections;
+using CRM.Application.DependencyInjections;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,9 +8,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAuthentication().AddCookie();
-
 builder.Services.AddDataAcessLayerServices(builder.Configuration);
+builder.Services.AddApplicationLayerServices();
 
 var app = builder.Build();
 

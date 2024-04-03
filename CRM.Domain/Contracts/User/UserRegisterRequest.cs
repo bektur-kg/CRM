@@ -1,9 +1,9 @@
 ﻿using CRM.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace CRM.Domain.Contracts;
+namespace CRM.Domain.Contracts.User;
 
-public record UserRegisterDto
+public record UserRegisterRequest
 {
     [StringLength(300)]
     public string? FullName { get; set; }
@@ -11,9 +11,7 @@ public record UserRegisterDto
     [EmailAddress]
     public required string Email { get; set; }
 
-    public required string PassordHash { get; set; }
+    public required string Password { get; set; }
 
-    public required Role Role { get; set; }
-
-    public DateTime? BlockDate { get; set; }
+    public required UserRole Role { get; set; }
 }

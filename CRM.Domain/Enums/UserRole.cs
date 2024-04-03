@@ -1,6 +1,6 @@
 ﻿namespace CRM.Domain.Enums;
 
-public enum Role
+public enum UserRole
 {
     Admin,
     Marketer,
