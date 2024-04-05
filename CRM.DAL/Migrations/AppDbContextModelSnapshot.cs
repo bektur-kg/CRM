@@ -64,7 +64,7 @@ namespace CRM.DAL.Migrations
 
                     b.HasIndex("MarketerId");
 
-                    b.ToTable("Contacts");
+                    b.ToTable("Contacts", (string)null);
                 });
 
             modelBuilder.Entity("CRM.Domain.Entities.Lead", b =>
@@ -82,7 +82,7 @@ namespace CRM.DAL.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("Leads");
+                    b.ToTable("Leads", (string)null);
                 });
 
             modelBuilder.Entity("CRM.Domain.Entities.Sale", b =>
@@ -108,7 +108,7 @@ namespace CRM.DAL.Migrations
 
                     b.HasIndex("SellerId");
 
-                    b.ToTable("Sales");
+                    b.ToTable("Sales", (string)null);
                 });
 
             modelBuilder.Entity("CRM.Domain.Entities.User", b =>
@@ -140,7 +140,7 @@ namespace CRM.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("CRM.Domain.Entities.Contact", b =>

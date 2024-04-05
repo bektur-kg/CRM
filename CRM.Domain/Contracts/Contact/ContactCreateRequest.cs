@@ -2,16 +2,10 @@
 using CRM.Domain.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace CRM.Domain.Entities;
+namespace CRM.Domain.Contracts.Contact;
 
-public class Contact
+public record ContactCreateRequest
 {
-    public required long Id { get; set; }
-
-    public required long MarketerId { get; set; }
-
-    public User? Marketer { get; set; }
-
     [StringLength(AttributeConstants.CONTACT_FIRST_NAME_LENGTH)]
     public required string FirstName { get; set; }
 
@@ -21,12 +15,12 @@ public class Contact
     [StringLength(AttributeConstants.CONTACT_SURNAME_LENGTH)]
     public string? Surname { get; set; }
 
+    [Phone]
     public required string PhoneNumber { get; set; }
 
     [StringLength(AttributeConstants.EMAIL_LENGTH)]
+    [EmailAddress]  
     public string? Email { get; set; }
 
     public required ContactStatus Status { get; set; }
-
-    public required DateTime LastUpdated { get; set; }
 }

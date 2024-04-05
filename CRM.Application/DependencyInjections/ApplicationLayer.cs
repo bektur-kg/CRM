@@ -15,8 +15,11 @@ public static class ApplicationLayer
         services.AddTransient<IPasswordHasher, PasswordHasher>();
         services.AddScoped<IUserService, UserService>();
         services.AddTransient<IUserValidation, UserValidation>();
-        services.AddHttpContextAccessor();
 
+        services.AddScoped<IContactService, ContactService>();
+        services.AddScoped<IContactValidation, ContactValidation>();
+
+        services.AddHttpContextAccessor();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         services.AddAuthentication().AddCookie("Cookies", authenticationOptions =>

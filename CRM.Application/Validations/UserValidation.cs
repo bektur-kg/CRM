@@ -46,7 +46,7 @@ public class UserValidation : IUserValidation
 
     public BaseResult ValidateOnBlock(User userToBlock, long currentUserId)
     {
-        var result = ValidateForNull(userToBlock);
+        var result = ValidateForNull(userToBlock);  
 
         if (!result.IsSuccess) return result;
 
@@ -106,6 +106,4 @@ public class UserValidation : IUserValidation
 
         return new BaseResult();
     }
-
-
 }

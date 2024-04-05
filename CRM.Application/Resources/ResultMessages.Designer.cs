@@ -88,6 +88,24 @@ namespace CRM.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact with this phone number already exists.
+        /// </summary>
+        internal static string ContactAlreadyExists {
+            get {
+                return ResourceManager.GetString("ContactAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no such contact.
+        /// </summary>
+        internal static string ContactNotFound {
+            get {
+                return ResourceManager.GetString("ContactNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You cannot delete user you are currently in .
         /// </summary>
         internal static string DeleteCurrentUserError {
@@ -111,6 +129,33 @@ namespace CRM.Application.Resources {
         internal static string InternalServerError {
             get {
                 return ResourceManager.GetString("InternalServerError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid contact status.
+        /// </summary>
+        internal static string InvalidContactStatus {
+            get {
+                return ResourceManager.GetString("InvalidContactStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no such marketer.
+        /// </summary>
+        internal static string MarketerNotFound {
+            get {
+                return ResourceManager.GetString("MarketerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact has same status as you provided.
+        /// </summary>
+        internal static string SameContactStatusError {
+            get {
+                return ResourceManager.GetString("SameContactStatusError", resourceCulture);
             }
         }
         

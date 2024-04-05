@@ -2,7 +2,7 @@
 
 public enum UserRole
 {
-    Admin,
-    Marketer,
-    Seller,
+    Admin = 1,
+    Marketer = 2,
+    Seller = 3,
 }

@@ -126,6 +126,12 @@
   <data name="ChangeCurrentUserRoleError" xml:space="preserve">
     <value>You cannot change user role you are currently in</value>
   </data>
+  <data name="ContactAlreadyExists" xml:space="preserve">
+    <value>Contact with this phone number already exists</value>
+  </data>
+  <data name="ContactNotFound" xml:space="preserve">
+    <value>There is no such contact</value>
+  </data>
   <data name="DeleteCurrentUserError" xml:space="preserve">
     <value>You cannot delete user you are currently in </value>
   </data>
@@ -134,6 +140,15 @@
   </data>
   <data name="InternalServerError" xml:space="preserve">
     <value>Internal server error</value>
+  </data>
+  <data name="InvalidContactStatus" xml:space="preserve">
+    <value>Invalid contact status</value>
+  </data>
+  <data name="MarketerNotFound" xml:space="preserve">
+    <value>There is no such marketer</value>
+  </data>
+  <data name="SameContactStatusError" xml:space="preserve">
+    <value>Contact has same status as you provided</value>
   </data>
   <data name="SamePasswordError" xml:space="preserve">
     <value>Your old password and new password are same</value>

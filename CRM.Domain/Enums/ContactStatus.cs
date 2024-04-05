@@ -2,7 +2,7 @@
 
 public enum ContactStatus
 {
-    Cold,
-    Warm,
-    Lead
+    Cold = 1,
+    Warm = 2,
+    Lead = 3
 }

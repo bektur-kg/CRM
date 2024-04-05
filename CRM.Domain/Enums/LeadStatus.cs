@@ -2,9 +2,9 @@
 
 public enum LeadStatus
 {
-    New,
-    Proposition,
-    Negotiation,
-    Contract,
-    Lost
+    New = 1,
+    Proposition = 2,
+    Negotiation = 3,
+    Contract = 4,
+    Lost = 5
 }

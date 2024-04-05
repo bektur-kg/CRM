@@ -12,7 +12,6 @@ using CRM.Domain.Results;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
-using System.Net.Http;
 
 namespace CRM.Application.Services;
 
