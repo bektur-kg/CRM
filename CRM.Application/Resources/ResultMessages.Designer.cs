@@ -142,11 +142,38 @@ namespace CRM.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lead already exists.
+        /// </summary>
+        internal static string LeadAlreadyExists {
+            get {
+                return ResourceManager.GetString("LeadAlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no such lead.
+        /// </summary>
+        internal static string LeadNotFound {
+            get {
+                return ResourceManager.GetString("LeadNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no such marketer.
         /// </summary>
         internal static string MarketerNotFound {
             get {
                 return ResourceManager.GetString("MarketerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lead status you provided is not valid.
+        /// </summary>
+        internal static string NotValidLeadStatus {
+            get {
+                return ResourceManager.GetString("NotValidLeadStatus", resourceCulture);
             }
         }
         
@@ -174,6 +201,15 @@ namespace CRM.Application.Resources {
         internal static string SameRoleError {
             get {
                 return ResourceManager.GetString("SameRoleError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no such seller.
+        /// </summary>
+        internal static string SellerNotFound {
+            get {
+                return ResourceManager.GetString("SellerNotFound", resourceCulture);
             }
         }
         

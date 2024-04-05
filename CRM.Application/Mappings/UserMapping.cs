@@ -12,5 +12,6 @@ public class UserMapping : Profile
         CreateMap<User, UserRegisterResponse>();
         CreateMap<User, UserResponse>();
         CreateMap<User, ContactUserResponse>();
+        CreateMap<User, LeadUserResponse>();
     }
 }

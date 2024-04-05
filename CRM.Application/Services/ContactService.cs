@@ -76,6 +76,7 @@ public class ContactService : IContactService
     {
         var existingContact = await _dbContext.Contacts
             .AsNoTracking()
+            .Include(c => c.Marketer)
             .FirstOrDefaultAsync(contact => contact.PhoneNumber == requestDto.PhoneNumber);
 
         var result = _validation.ValidateOnCreate(existingContact);

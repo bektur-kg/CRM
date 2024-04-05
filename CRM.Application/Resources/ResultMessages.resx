@@ -144,8 +144,17 @@
   <data name="InvalidContactStatus" xml:space="preserve">
     <value>Invalid contact status</value>
   </data>
+  <data name="LeadAlreadyExists" xml:space="preserve">
+    <value>Lead already exists</value>
+  </data>
+  <data name="LeadNotFound" xml:space="preserve">
+    <value>There is no such lead</value>
+  </data>
   <data name="MarketerNotFound" xml:space="preserve">
     <value>There is no such marketer</value>
+  </data>
+  <data name="NotValidLeadStatus" xml:space="preserve">
+    <value>Lead status you provided is not valid</value>
   </data>
   <data name="SameContactStatusError" xml:space="preserve">
     <value>Contact has same status as you provided</value>
@@ -155,6 +164,9 @@
   </data>
   <data name="SameRoleError" xml:space="preserve">
     <value>This user has same role as you provided</value>
+  </data>
+  <data name="SellerNotFound" xml:space="preserve">
+    <value>There is no such seller</value>
   </data>
   <data name="UserAlreadyExists" xml:space="preserve">
     <value>Such user already exists</value>

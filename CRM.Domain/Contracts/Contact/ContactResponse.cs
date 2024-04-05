@@ -1,6 +1,5 @@
 ﻿using CRM.Domain.Contracts.User;
 using CRM.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
 
 namespace CRM.Domain.Contracts.Contact;
 
