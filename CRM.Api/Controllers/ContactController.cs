@@ -1,4 +1,5 @@
-﻿using CRM.Domain.Contracts.Contact;
+﻿using CRM.Api.Constants;
+using CRM.Domain.Contracts.Contact;
 
 namespace CRM.Api.Controllers;
 
@@ -13,7 +14,7 @@ public class ContactController : ControllerBase
         _contactService = contactService;
     }
 
-    [Authorize(Roles = $"{nameof(UserRole.Admin)}, {nameof(UserRole.Marketer)}")]
+    [Authorize(Roles = UserRoleMatches.AdminOrMarketer)]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<List<ContactResponse>>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(UnauthorizedResult))]
@@ -25,7 +26,7 @@ public class ContactController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Seller))]
+    [Authorize(Roles = UserRoleMatches.Seller)]
     [HttpGet("leads")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<List<ContactResponse>>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(UnauthorizedResult))]
@@ -37,7 +38,7 @@ public class ContactController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Marketer))]
+    [Authorize(Roles = UserRoleMatches.Marketer)]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<ContactResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
@@ -52,7 +53,7 @@ public class ContactController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = $"{nameof(UserRole.Marketer)}, {nameof(UserRole.Seller)}")]
+    [Authorize(Roles = UserRoleMatches.MarketerOrSeller)]
     [HttpPatch("{id}/status")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<ContactResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
@@ -67,7 +68,7 @@ public class ContactController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = $"{nameof(UserRole.Marketer)}, {nameof(UserRole.Seller)}")]
+    [Authorize(Roles = UserRoleMatches.MarketerOrSeller)]
     [HttpPatch("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<ContactResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]

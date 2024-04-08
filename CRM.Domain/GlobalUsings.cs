@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CRM.Domain
-{
-    internal class GlobalUsings
-    {
-    }
-}
+﻿global using CRM.Domain.Enums;
+global using CRM.Domain.Constants;
+global using System.ComponentModel.DataAnnotations;
+global using CRM.Domain.Results;
+global using CRM.Domain.Entities;

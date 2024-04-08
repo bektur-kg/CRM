@@ -1,4 +1,5 @@
-﻿using CRM.Domain.Contracts.User;
+﻿using CRM.Api.Constants;
+using CRM.Domain.Contracts.User;
 
 namespace CRM.Api.Controllers;
 
@@ -13,7 +14,7 @@ public class UserController : ControllerBase
         _userService = userService;
     }
 
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = UserRoleMatches.Admin)]
     [HttpPost("auth/register")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<UserRegisterResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
@@ -25,7 +26,6 @@ public class UserController : ControllerBase
 
         if (result.IsSuccess)
         {
-            //todo: change to created  
             return Ok(result);
         }
 
@@ -58,7 +58,7 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+    [Authorize(Roles = UserRoleMatches.Admin)]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<List<UserResponse>>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(UnauthorizedResult))]
@@ -81,7 +81,7 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+    [Authorize(Roles = UserRoleMatches.Admin)]
     [HttpPatch("{id}/block")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
@@ -96,7 +96,7 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+    [Authorize(Roles = UserRoleMatches.Admin)]
     [HttpPatch("{id}/unblock")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
@@ -111,7 +111,7 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+    [Authorize(Roles = UserRoleMatches.Admin)]
     [HttpPatch("{id}/role")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<UserResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
@@ -140,7 +140,7 @@ public class UserController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+    [Authorize(Roles = UserRoleMatches.Admin)]
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]

@@ -1,4 +1,6 @@
-﻿namespace CRM.Application.Services;
+﻿using CRM.Domain.Contracts.Contact;
+
+namespace CRM.Application.Services;
 
 public class ContactService : IContactService
 {

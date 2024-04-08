@@ -1,4 +1,5 @@
-﻿using CRM.Domain.Contracts.Sale;
+﻿using CRM.Api.Constants;
+using CRM.Domain.Contracts.Sale;
 
 namespace CRM.Api.Controllers;
 
@@ -13,7 +14,7 @@ public class SaleController : ControllerBase
         _saleService = saleService;
     }
 
-    [Authorize(Roles = nameof(UserRole.Admin))]
+    [Authorize(Roles = UserRoleMatches.Admin)]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<List<SaleResponse>>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(UnauthorizedResult))]
@@ -25,7 +26,7 @@ public class SaleController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Seller))]
+    [Authorize(Roles = UserRoleMatches.Seller)]
     [HttpGet("seller-sales")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<List<SaleResponse>>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(UnauthorizedResult))]
@@ -37,7 +38,7 @@ public class SaleController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Seller))]
+    [Authorize(Roles = UserRoleMatches.Seller)]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<SaleResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]

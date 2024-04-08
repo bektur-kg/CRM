@@ -1,4 +1,5 @@
-﻿using CRM.Domain.Contracts.Lead;
+﻿using CRM.Api.Constants;
+using CRM.Domain.Contracts.Lead;
 
 namespace CRM.Api.Controllers;
 
@@ -13,7 +14,7 @@ public class LeadController : ControllerBase
         _leadService = leadService;
     }
 
-    [Authorize(Roles = nameof(UserRole.Seller))]
+    [Authorize(Roles = UserRoleMatches.Seller)]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<LeadResponse>))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(UnauthorizedResult))]
@@ -25,7 +26,7 @@ public class LeadController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Seller))]
+    [Authorize(Roles = UserRoleMatches.Seller)]
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<LeadResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
@@ -40,7 +41,7 @@ public class LeadController : ControllerBase
         return Ok(result);
     }
 
-    [Authorize(Roles = nameof(UserRole.Seller))]
+    [Authorize(Roles = UserRoleMatches.Seller)]
     [HttpPatch("{id}/status")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<LeadResponse>))]
     [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
