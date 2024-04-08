@@ -6,8 +6,6 @@ public record ContactResponse
 {
     public required long Id { get; set; }
 
-    public ContactUserResponse? Marketer { get; set; }
-
     public required string FirstName { get; set; }
 
     public string? LastName { get; set; }
