@@ -1,7 +1,4 @@
-﻿using CRM.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
-
-namespace CRM.Domain.Entities;
+﻿namespace CRM.Domain.Entities;
 
 public class Lead
 {

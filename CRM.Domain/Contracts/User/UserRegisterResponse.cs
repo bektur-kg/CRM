@@ -1,7 +1,4 @@
-﻿using CRM.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
-
-namespace CRM.Domain.Contracts.User;
+﻿namespace CRM.Domain.Contracts.User;
 
 public record UserRegisterResponse
 {

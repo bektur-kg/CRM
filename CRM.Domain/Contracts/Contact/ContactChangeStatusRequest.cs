@@ -1,6 +1,4 @@
-﻿using CRM.Domain.Enums;
-
-namespace CRM.Domain.Contracts.Contact;
+﻿namespace CRM.Domain.Contracts.Contact;
 
 public record ContactChangeStatusRequest
 {

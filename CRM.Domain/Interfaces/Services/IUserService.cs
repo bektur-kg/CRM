@@ -1,6 +1,4 @@
 ﻿using CRM.Domain.Contracts.User;
-using CRM.Domain.Enums;
-using CRM.Domain.Results;
 
 namespace CRM.Domain.Interfaces.Services;
 

@@ -1,5 +1,4 @@
 ﻿using CRM.Domain.Contracts.User;
-using CRM.Domain.Enums;
 
 namespace CRM.Domain.Contracts.Contact;
 

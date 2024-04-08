@@ -1,7 +1,4 @@
-﻿using CRM.Domain.Entities;
-using CRM.Domain.Results;
-
-namespace CRM.Domain.Interfaces.Validations;
+﻿namespace CRM.Domain.Interfaces.Validations;
 
 public interface ISaleValidation
 {

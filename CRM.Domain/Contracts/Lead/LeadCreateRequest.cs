@@ -1,6 +1,4 @@
-﻿using CRM.Domain.Enums;
-
-namespace CRM.Domain.Contracts.Lead;
+﻿namespace CRM.Domain.Contracts.Lead;
 
 public record LeadCreateRequest
 {

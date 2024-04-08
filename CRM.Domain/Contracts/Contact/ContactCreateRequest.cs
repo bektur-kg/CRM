@@ -1,8 +1,4 @@
-﻿using CRM.Domain.Constants;
-using CRM.Domain.Enums;
-using System.ComponentModel.DataAnnotations;
-
-namespace CRM.Domain.Contracts.Contact;
+﻿namespace CRM.Domain.Contracts.Contact;
 
 public record ContactCreateRequest
 {

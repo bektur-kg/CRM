@@ -1,5 +1,4 @@
 ﻿using CRM.Domain.Contracts.Sale;
-using CRM.Domain.Results;
 
 namespace CRM.Domain.Interfaces.Services;
 
