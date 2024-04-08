@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using CRM.DAL.DbContexts;
-using CRM.Domain.Contracts.Sale;
-using CRM.Domain.Entities;
-using CRM.Domain.Interfaces.Services;
-using CRM.Domain.Interfaces.Validations;
-using CRM.Domain.Results;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
+﻿using CRM.Domain.Contracts.Sale;
 
 namespace CRM.Application.Services;
 

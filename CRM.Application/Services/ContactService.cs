@@ -1,16 +1,4 @@
-﻿using AutoMapper;
-using CRM.DAL.DbContexts;
-using CRM.Domain.Contracts.Contact;
-using CRM.Domain.Entities;
-using CRM.Domain.Enums;
-using CRM.Domain.Interfaces.Services;
-using CRM.Domain.Interfaces.Validations;
-using CRM.Domain.Results;
-using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
-
-namespace CRM.Application.Services;
+﻿namespace CRM.Application.Services;
 
 public class ContactService : IContactService
 {

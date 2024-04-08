@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using CRM.Domain.Contracts.Lead;
-using CRM.Domain.Entities;
+﻿using CRM.Domain.Contracts.Lead;
 
 namespace CRM.Application.Mappings;
 

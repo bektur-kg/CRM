@@ -1,10 +1,4 @@
-﻿using CRM.Application.Resources;
-using CRM.Domain.Entities;
-using CRM.Domain.Enums;
-using CRM.Domain.Interfaces.Validations;
-using CRM.Domain.Results;
-
-namespace CRM.Application.Validations;
+﻿namespace CRM.Application.Validations;
 
 public class LeadValidation : ILeadValidation
 {

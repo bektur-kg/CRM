@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using CRM.Domain.Contracts.Contact;
-using CRM.Domain.Entities;
-
-namespace CRM.Application.Mappings;
+﻿namespace CRM.Application.Mappings;
 
 public class ContactMapping : Profile
 {

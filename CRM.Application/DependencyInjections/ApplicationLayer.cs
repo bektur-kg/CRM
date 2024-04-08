@@ -1,9 +1,6 @@
 ﻿using CRM.Application.Services;
 using CRM.Application.Tools;
-using CRM.Application.Validations;
-using CRM.Domain.Interfaces.Services;
 using CRM.Domain.Interfaces.Tools;
-using CRM.Domain.Interfaces.Validations;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CRM.Application.DependencyInjections;
