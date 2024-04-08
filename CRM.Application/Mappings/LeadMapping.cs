@@ -9,6 +9,7 @@ public class LeadMapping : Profile
     public LeadMapping()
     {
         CreateMap<Lead, LeadResponse>();
+        CreateMap<Lead, LeadSaleResponse>();
         CreateMap<LeadCreateRequest, Lead>();
     }
 }

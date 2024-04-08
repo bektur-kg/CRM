@@ -20,7 +20,10 @@ public static class ApplicationLayer
         services.AddScoped<IContactValidation, ContactValidation>();
 
         services.AddScoped<ILeadService, LeadService>();
-        services.AddScoped<ILeadValidation, LeadValidation>();
+        services.AddTransient<ILeadValidation, LeadValidation>();
+
+        services.AddScoped<ISaleService, SaleService>();
+        services.AddTransient<ISaleValidation, SaleValidation>();
 
         services.AddHttpContextAccessor();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
