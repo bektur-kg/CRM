@@ -48,6 +48,13 @@ public class UserService : IUserService
         return new BaseResult();
     }
 
+    public async Task<BaseResult> LogoutUserAsync()
+    {
+        await _httpContext.SignOutAsync();
+
+        return new BaseResult();
+    }
+
     public async Task<BaseResult<UserRegisterResponse>> RegisterUserAsync(UserRegisterRequest requestDto)
     {
         var existingUser = await _dbContext.Users.AsNoTracking().Where(user => user.Email == requestDto.Email).FirstOrDefaultAsync();

@@ -52,6 +52,17 @@ public class UserController : ControllerBase
         return Unauthorized(result);
     }
 
+    [Authorize]
+    [HttpPost("auth/logout")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(BaseResult))]
+    public async Task<ActionResult<BaseResult>> LogoutUser()
+    {
+        var result = await _userService.LogoutUserAsync();
+
+        return Ok(result);
+    }
+
     [Authorize(Roles = nameof(UserRole.Admin))]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(BaseResult<List<UserResponse>>))]
