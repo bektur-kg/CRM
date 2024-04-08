@@ -1,6 +1,4 @@
 ﻿using CRM.DAL.Configurations;
-using CRM.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace CRM.DAL.DbContexts;
 
